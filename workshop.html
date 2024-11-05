@@ -326,40 +326,55 @@ successMessage.style.display = "block";
 
         <section class="workshop-section section-space-top">
             <div class="container">
-                <h3 class="workshop-section__title">Upcoming Workshops</h3>
-                
+                <h3 class="workshop-section__title">All Workshops</h3>
+    
                 <!-- Filter Buttons -->
                 <div class="workshop-filter">
                     <button class="workshop-filter__button" onclick="showWorkshops('all')">All</button>
+                    <button class="workshop-filter__button" onclick="showWorkshops('upcoming')">Upcoming</button>
                     <button class="workshop-filter__button" onclick="showWorkshops('fullstack')">Full Stack Development</button>
                     <button class="workshop-filter__button" onclick="showWorkshops('digitalmarketing')">Digital Marketing</button>
                     <button class="workshop-filter__button" onclick="showWorkshops('medicalcoding')">Medical Coding</button>
                 </div>
-                
+    
                 <!-- Workshop List -->
                 <div id="workshopList" class="row gutter-y-50">
-                    <!-- Sample Workshop Item for Full Stack Development -->
-                    <div class="col-lg-4 workshop-item" data-category="fullstack">
+                    <!-- Full Stack Development Workshops -->
+                    <div class="col-lg-4 workshop-item" data-category="fullstack" data-status="upcoming">
+                        <div class="workshop__content">
+                            <img src="images/Software code testing-amico.svg" alt="Full Stack Workshop" class="workshop__banner">
+                            <h4 class="workshop__title">Full Stack Development Advanced Workshop</h4>
+                            <p class="workshop__date">Date: November 20, 2024</p>
+                            <button class="apply-btn" onclick="openPopup('Full Stack Development Advanced Workshop')">Apply Now</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 workshop-item" data-category="fullstack" data-status="past">
                         <div class="workshop__content">
                             <img src="images/Software code testing-amico.svg" alt="Full Stack Workshop" class="workshop__banner">
                             <h4 class="workshop__title">Full Stack Development Workshop</h4>
-                            <p class="workshop__date">Date: Coming Soon...</p>
-                            <button class="apply-btn" onclick="openPopup('Full Stack Development Workshop')">Apply Now</button>
+                            <p class="workshop__date">Date: March 15, 2023</p>
                         </div>
                     </div>
-                    
-                    <!-- Sample Workshop Item for Digital Marketing -->
-                    <div class="col-lg-4 workshop-item" data-category="digitalmarketing">
+    
+                    <!-- Digital Marketing Workshops -->
+                    <div class="col-lg-4 workshop-item" data-category="digitalmarketing" data-status="upcoming">
                         <div class="workshop__content">
                             <img src="images/Marketing consulting-pana.svg" alt="Digital Marketing Workshop" class="workshop__banner">
-                            <h4 class="workshop__title">Digital Marketing Workshop</h4>
-                            <p class="workshop__date">Date: Coming Soon...</p>
-                            <button class="apply-btn" onclick="openPopup('Digital Marketing Workshop')">Apply Now</button>
+                            <h4 class="workshop__title">Digital Marketing Strategy Workshop</h4>
+                            <p class="workshop__date">Date: December 5, 2024</p>
+                            <button class="apply-btn" onclick="openPopup('Digital Marketing Strategy Workshop')">Apply Now</button>
                         </div>
                     </div>
-                    
-                    <!-- Sample Workshop Item for Medical Coding -->
-                    <div class="col-lg-4 workshop-item" data-category="medicalcoding">
+                    <div class="col-lg-4 workshop-item" data-category="digitalmarketing" data-status="past">
+                        <div class="workshop__content">
+                            <img src="images/Marketing consulting-pana.svg" alt="Digital Marketing Workshop" class="workshop__banner">
+                            <h4 class="workshop__title">Digital Marketing Basics Workshop</h4>
+                            <p class="workshop__date">Date: April 10, 2023</p>
+                        </div>
+                    </div>
+    
+                    <!-- Medical Coding Workshops -->
+                    <div class="col-lg-4 workshop-item" data-category="medicalcoding" data-status="upcoming">
                         <div class="workshop__content">
                             <img src="images/Medicine-pana.svg" alt="Medical Coding Workshop" class="workshop__banner">
                             <h4 class="workshop__title">Medical Coding Workshop</h4>
@@ -367,9 +382,68 @@ successMessage.style.display = "block";
                             <button class="apply-btn" onclick="openPopup('Medical Coding Workshop')">Apply Now</button>
                         </div>
                     </div>
+                    <div class="col-lg-4 workshop-item" data-category="medicalcoding" data-status="past">
+                        <div class="workshop__content">
+                            <img src="images/Medicine-pana.svg" alt="Medical Coding Workshop" class="workshop__banner">
+                            <h4 class="workshop__title">Medical Coding Basics Workshop</h4>
+                            <p class="workshop__date">Date: July 20, 2023</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+    
+        <script>
+            function showWorkshops(filter) {
+                const workshopList = document.getElementById('workshopList');
+                const workshops = Array.from(document.querySelectorAll('.workshop-item'));
+    
+                // Clear the workshop list
+                workshopList.innerHTML = '';
+    
+                // Filter workshops based on selected filter
+                const filteredWorkshops = workshops.filter(workshop => {
+                    const category = workshop.getAttribute('data-category');
+                    const status = workshop.getAttribute('data-status');
+    
+                    // Show all workshops
+                    if (filter === 'all') return true;
+    
+                    // Show upcoming workshops
+                    if (filter === 'upcoming' && status === 'upcoming') return true;
+    
+                    // Show workshops of the selected category
+                    return filter === category;
+                });
+    
+                // Sort filtered workshops: upcoming first, past last
+                filteredWorkshops.sort((a, b) => {
+                    const statusA = a.getAttribute('data-status');
+                    const statusB = b.getAttribute('data-status');
+    
+                    // Sort: upcoming first
+                    if (statusA === 'upcoming' && statusB === 'past') return -1;
+                    if (statusA === 'past' && statusB === 'upcoming') return 1;
+                    return 0; // for identical statuses
+                });
+    
+                // Append filtered and sorted workshops
+                filteredWorkshops.forEach(workshop => {
+                    workshopList.appendChild(workshop);
+                });
+    
+                // If no workshops match the filter, show a message
+                if (filteredWorkshops.length === 0) {
+                    workshopList.innerHTML = '<p>No workshops available.</p>';
+                }
+            }
+    
+            // Initial call to show all workshops on page load
+            showWorkshops('all');
+        </script>
+        
+        
+        
         
         <!-- Popup Form -->
         <div id="popupForm" class="popup-form">
