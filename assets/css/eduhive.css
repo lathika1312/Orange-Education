@@ -5603,6 +5603,7 @@ body.megamenu-popup-active .mobile-nav__content {
 # Footer
 --------------------------------------------------------------*/
 .main-footer {
+  margin-top: 100px;
   position: relative;
   background: linear-gradient(90deg, #CDF1FF 0%, #ECE9FF 100%);
 }
