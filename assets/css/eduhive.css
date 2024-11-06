@@ -5673,7 +5673,7 @@ body.megamenu-popup-active .mobile-nav__content {
 }
 .main-footer__newsletter__form input[type=text]:focus {
   color: var(--eduhive-black, #20104B);
-  border-color: var(--eduhive-base, #674CEF);
+  border-color: var(--eduhive-base, #ef802e);
 }
 .main-footer__newsletter__form button[type=submit] {
   height: 91%;
