@@ -595,7 +595,7 @@ h6 {
   border: none;
   outline: none !important;
   padding: 9px 9px 9px 15px;
-  background-color: var(--eduhive-base, #674CEF);
+  background-color: #20104B;
   font-family: var(--eduhive-font, "Plus Jakarta Sans", sans-serif);
   font-size: 16px;
   color: var(--eduhive-white, #FFFFFF);
@@ -604,6 +604,7 @@ h6 {
   border-radius: 6px;
   z-index: 1;
   transition: 500ms;
+  margin: 0;
 }
 .eduhive-btn::after {
   content: "";
@@ -661,18 +662,18 @@ h6 {
   color: var(--eduhive-base, #674CEF);
 }
 .eduhive-btn--border {
-  color: var(--eduhive-base, #674CEF);
+  color: #20104B;
   background-color: transparent;
-  border: 1px solid var(--eduhive-base, #674CEF);
+  border: 1px solid #20104B;
 }
 .eduhive-btn--border::after {
-  background-color: var(--eduhive-base, #674CEF);
+  background-color:#20104B;
 }
 .eduhive-btn--border:hover {
   color: var(--eduhive-white, #FFFFFF);
 }
 .eduhive-btn--border .eduhive-btn__icon {
-  background-color: var(--eduhive-base, #674CEF);
+  background-color: #20104B;
 }
 .eduhive-btn--border .eduhive-btn__icon__inner {
   color: var(--eduhive-white, #FFFFFF);
@@ -693,7 +694,7 @@ h6 {
   height: 62px;
   font-size: 20px;
   color: var(--eduhive-white, #FFFFFF);
-  background-color: var(--eduhive-secondary, #39D4D6);
+  background-color:#ef802e;
   position: relative;
   border-radius: 50%;
   transition: all 500ms ease;
@@ -704,7 +705,7 @@ h6 {
   fill: currentColor;
 }
 .video-btn:hover {
-  background-color: var(--eduhive-base, #674CEF);
+  background-color:#20104B;
 }
 .video-btn > span {
   width: 100%;
@@ -4337,7 +4338,7 @@ a:hover .instructor-card-two__social__icon {
 }
 .main-menu .main-menu__list > li.current > a,
 .main-menu .main-menu__list > li:hover > a {
-  color: var(--eduhive-base, #674CEF);
+  color:#ef802e;
   text-shadow: 0 0 0.5px currentColor;
 }
 .main-menu .main-menu__list li ul {
@@ -4409,7 +4410,7 @@ a:hover .instructor-card-two__social__icon {
 }
 .main-menu .main-menu__list li ul li.current > a,
 .main-menu .main-menu__list li ul li:hover > a {
-  background-color: var(--eduhive-base, #674CEF);
+  background-color: #20104B;
   color: var(--eduhive-white, #FFFFFF);
 }
 .main-menu .main-menu__list li ul li.current > a::after,
@@ -5603,6 +5604,7 @@ body.megamenu-popup-active .mobile-nav__content {
 # Footer
 --------------------------------------------------------------*/
 .main-footer {
+  margin-top: 100px;
   position: relative;
   background: linear-gradient(90deg, #CDF1FF 0%, #ECE9FF 100%);
 }
@@ -5674,7 +5676,7 @@ body.megamenu-popup-active .mobile-nav__content {
   border-color: var(--eduhive-base, #674CEF);
 }
 .main-footer__newsletter__form button[type=submit] {
-  height: 100%;
+  height: 91%;
   padding-left: 34px;
   padding-right: 34px;
   position: absolute;
@@ -5900,7 +5902,7 @@ body.megamenu-popup-active .mobile-nav__content {
   transition: all 500ms ease;
 }
 .footer-widget__links li a:hover {
-  color: var(--eduhive-base, #674CEF);
+  color: #ef802e;
 }
 .footer-widget__links li a .footer-widget__links__icon {
   display: inline-flex;
@@ -13375,12 +13377,12 @@ li:hover .sidebar__comments__icon {
 }
 .product__price-ranger #slider-range .ui-slider-range {
   height: 100%;
-  background: var(--eduhive-base, #674CEF);
+  background: var(--eduhive-base, #20104b);
 }
 .product__price-ranger #slider-range .ui-slider-handle {
   position: absolute;
   top: -6.5px;
-  background: var(--eduhive-base, #674CEF);
+  background: var(--eduhive-base, #20104b);
   border: 0;
   height: 18px;
   width: 18px !important;
@@ -14491,9 +14493,9 @@ li:hover .sidebar__comments__icon {
 }
 .checkout-page__control .bootstrap-select .dropdown-menu > li:hover > a,
 .checkout-page__control .bootstrap-select .dropdown-menu > li.selected > a {
-  background: var(--eduhive-base, #674CEF);
+  background: var(--eduhive-base, #20104b);
   color: var(--eduhive-white, #FFFFFF);
-  border-color: var(--eduhive-base, #674CEF);
+  border-color: var(--eduhive-base, #20104b);
 }
 .checkout-page__different-address {
   margin-top: 55px;

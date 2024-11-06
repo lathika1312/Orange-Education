@@ -693,7 +693,7 @@ h6 {
   height: 62px;
   font-size: 20px;
   color: var(--eduhive-white, #FFFFFF);
-  background-color: var(--eduhive-secondary, #39D4D6);
+  background-color:  #20104B;
   position: relative;
   border-radius: 50%;
   transition: all 500ms ease;
@@ -704,7 +704,7 @@ h6 {
   fill: currentColor;
 }
 .video-btn:hover {
-  background-color: var(--eduhive-base, #674CEF);
+  background-color: var(--eduhive-base, #20104B);
 }
 .video-btn > span {
   width: 100%;
@@ -13375,12 +13375,12 @@ li:hover .sidebar__comments__icon {
 }
 .product__price-ranger #slider-range .ui-slider-range {
   height: 100%;
-  background: var(--eduhive-base, #674CEF);
+  background: var(--eduhive-base, #20104b);
 }
 .product__price-ranger #slider-range .ui-slider-handle {
   position: absolute;
   top: -6.5px;
-  background: var(--eduhive-base, #674CEF);
+  background: var(--eduhive-base, #20104b);
   border: 0;
   height: 18px;
   width: 18px !important;
@@ -14491,9 +14491,9 @@ li:hover .sidebar__comments__icon {
 }
 .checkout-page__control .bootstrap-select .dropdown-menu > li:hover > a,
 .checkout-page__control .bootstrap-select .dropdown-menu > li.selected > a {
-  background: var(--eduhive-base, #674CEF);
+  background: var(--eduhive-base, #20104b);
   color: var(--eduhive-white, #FFFFFF);
-  border-color: var(--eduhive-base, #674CEF);
+  border-color: var(--eduhive-base, #20104b);
 }
 .checkout-page__different-address {
   margin-top: 55px;
