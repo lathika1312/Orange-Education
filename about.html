@@ -142,45 +142,45 @@
                     </div><!-- /.main-header__inner -->
                     
                    <!-- Popup Modal Structure for "Get in Touch" -->
-<div id="getInTouchModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeGetInTouchModal" style="text-align: right;">&times;</span>
-        <center><h2>I'm Interested</h2></center>
-        
-        <!-- Contact Form -->
-        <form id="contactForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <label for="course">Select Course:</label>
-            <select id="course" name="course" required>
-                <option value="">--Please choose an option--</option>
-                <option value="medical-coding">Medical Coding</option>
-                <option value="digital-marketing">Digital Marketing</option>
-                <option value="full-stack-development">Full Stack Development</option>
-            </select>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <div class="button-container">
-                <button type="submit"> Yes I'm Interested</button>
-            </div>
-        </form>
-        
-        <!-- Success Message (Initially Hidden) -->
-        <div id="successMessage" style="display: none; text-align: center; color: green; font-size: 16px; margin-top: 10px;">
-            <i class="icon-check-circle" style="font-size: 24px; color: green; vertical-align: middle;"></i>
-            Form submitted successfully! Our team will reach out soon with more details on the course and next steps.
-        </div>
-    </div>
-</div>
+                   <div id="getInTouchModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" id="closeGetInTouchModal" style="text-align: right;">&times;</span>
+                        <center><h2>I'm Interested</h2></center>
+                        
+                        <!-- Contact Form -->
+                        <form id="contactForm" action="submit_form.php" method="POST">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                
+                            <label for="phone">Phone:</label>
+                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+                
+                            <label for="course">Select Course:</label>
+                            <select id="course" name="course" required>
+                                <option value="">--Please choose an option--</option>
+                                <option value="medical-coding">Medical Coding</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="full-stack-development">Full Stack Development</option>
+                            </select>
+                
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                
+                            <div class="button-container">
+                                <button type="submit">Yes I'm Interested</button>
+                            </div>
+                        </form>
+                        
+                        <!-- Success Message (Initially Hidden) -->
+                        <div id="successMessage" style="display: none; text-align: center; color: green; font-size: 16px; margin-top: 10px;">
+                            <i class="icon-check-circle" style="font-size: 24px; color: green; vertical-align: middle;"></i>
+                            Form submitted successfully! Our team will reach out soon with more details on the course and next steps.
+                        </div>
+                    </div>
+                </div>
 
 
 <style>
@@ -271,41 +271,51 @@ button:hover {
 
 
 
-                    <script>
-                        var getInTouchModal = document.getElementById("getInTouchModal");
-var getInTouchBtn = document.getElementById("getInTouchBtn");
-var closeGetInTouchModal = document.getElementById("closeGetInTouchModal");
-var form = document.getElementById("contactForm");
-var successMessage = document.getElementById("successMessage");
+<script>
+    var getInTouchModal = document.getElementById("getInTouchModal");
+    var getInTouchBtn = document.getElementById("getInTouchBtn");
+    var closeGetInTouchModal = document.getElementById("closeGetInTouchModal");
+    var form = document.getElementById("contactForm");
+    var successMessage = document.getElementById("successMessage");
 
-// Show the modal when "Get in touch" is clicked
-getInTouchBtn.onclick = function() {
-    getInTouchModal.style.display = "block";
-}
+    // Show modal
+    getInTouchBtn.onclick = function() {
+        getInTouchModal.style.display = "block";
+    }
 
-// Close the modal when the close button is clicked
-closeGetInTouchModal.onclick = function() {
-    getInTouchModal.style.display = "none";
-}
-
-// Close modal when clicking outside of it
-window.onclick = function(event) {
-    if (event.target == getInTouchModal) {
+    // Close modal
+    closeGetInTouchModal.onclick = function() {
         getInTouchModal.style.display = "none";
     }
-}
 
-// Handle form submission
-form.onsubmit = function(event) {
-    event.preventDefault(); // Prevent default form submission
+    // Close modal on clicking outside
+    window.onclick = function(event) {
+        if (event.target == getInTouchModal) {
+            getInTouchModal.style.display = "none";
+        }
+    }
+
+    form.onsubmit = function(event) {
+    event.preventDefault(); // Prevent form from redirecting
+    var formData = new FormData(form);
     
-    // Hide the form and show success message
-    form.style.display = "none";
-    successMessage.style.display = "block";
-}
-
-
-                    </script>
+    // AJAX request to PHP script
+    fetch("submit_form.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json()) // Parse JSON response
+    .then(data => {
+        if (data.status === 'success') {
+            form.style.display = "none";
+            successMessage.style.display = "block";
+        } else {
+            alert(data.message || "Error submitting form. Please try again.");
+        }
+    })
+    .catch(error => console.error("Error:", error));
+};
+</script>
             </div><!-- /.container-fluid -->
         </header><!-- /.main-header -->
         <section class="page-header">
