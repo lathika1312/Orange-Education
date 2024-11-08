@@ -16358,3 +16358,12 @@ body.boxed-wrapper .main-footer__shape-five {
   }
 }
 /*# sourceMappingURL=eduhive.css.map */
+
+
+.terms-title h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.terms-title h3{
+   font-size: 20px;
+}
