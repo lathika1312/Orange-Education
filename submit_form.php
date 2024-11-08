@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
             $mail->Username = 'demo.orangeacadamy@gmail.com';
-            $mail->Password = 'vkbagdpfrshlcaf';
+            $mail->Password = 'fzfslarjffiazzhb';
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
 
