@@ -15912,7 +15912,6 @@ li:hover .sidebar__comments__icon {
   width: 100%;
   height: 100%;
   border-radius: 228px;
-  background-color: var(--eduhive-primary, #EF802E);
   z-index: -1;
 }
 @media (max-width: 575px) {
