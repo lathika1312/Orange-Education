@@ -311,6 +311,113 @@ button:hover {
     .catch(error => console.error("Error:", error));
 };
 </script>
+
+
+
+<style>
+    .demo-form {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        width: 400px;
+        height: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        font-size: 16px;
+        text-align: center;
+    }
+    .demo-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    .demo-form label, .demo-form input, .demo-form textarea {
+        margin: 5px 0;
+        padding: 8px;
+        font-size: 17px;
+        color: #000;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .demo-close-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #ccc;
+    }
+    .demo-close-icon:hover {
+        color: #000;
+    }
+    .demo-form form {
+        text-align: left;
+    }
+    .demo-form button {
+        width: auto;
+        margin-top: 10px;
+        padding: 8px 16px;
+        font-size: 18px;
+    }
+    .demo-form input::placeholder, .demo-form textarea::placeholder {
+        color: #0000006b;
+    }
+</style>
+
+
+<div class="demo-overlay" id="demoOverlay"></div>
+<div class="demo-form" id="demoForm">
+    <span class="demo-close-icon" onclick="closeDemoForm()">&#10005;</span>
+    <h3><b>Book A Demo</b></h3>
+    <form method="POST" action="demo_form_handler.php">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your name">
+        
+        <label for="phone">Mobile Number</label>
+        <input type="text" id="phone" name="phone" required placeholder="Enter your phone number">
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+        
+        <center><button type="submit">Submit</button></center>
+    </form>
+</div>
+
+<script>
+    function showDemoForm() {
+        document.getElementById("demoForm").style.display = "block";
+        document.getElementById("demoOverlay").style.display = "block";
+    }
+
+    function closeDemoForm() {
+        document.getElementById("demoForm").style.display = "none";
+        document.getElementById("demoOverlay").style.display = "none";
+    }
+
+    // Show the form when the page loads
+    window.onload = function() {
+        showDemoForm();
+    };
+
+    // Set an interval to show the form every 10 seconds
+    setInterval(function() {
+        showDemoForm();
+    }, 10000); // 10 seconds
+</script>   
+
+
+
+
             </div><!-- /.container-fluid -->
         </header><!-- /.main-header -->
         <section class="page-header">

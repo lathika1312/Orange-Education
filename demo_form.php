@@ -24,8 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(trim($_POST['name'] ?? ''));
     $email = htmlspecialchars(trim($_POST['email'] ?? ''));
     $phone = htmlspecialchars(trim($_POST['phone'] ?? ''));
-    $course = htmlspecialchars(trim($_POST['course'] ?? ''));
-    $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
     if (!empty($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/^[0-9]{10}$/', $phone) && !empty($course)) {
         $mail = new PHPMailer();
@@ -47,9 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body = "New Medical Coding Education Form Submission Received.<br><br>" .
                           "Name: " . $name . "<br>" .
                           "Email: " . $email . "<br>" .
-                          "Phone: " . $phone . "<br>" .
-                          "Course: " . $course . "<br>" .
-                          "Message: " . nl2br($message) . "<br>";
+                          "phone: " . $phone . "<br>";
 
             if ($mail->send()) {
                 echo json_encode(['status' => 'success', 'message' => 'Email sent successfully!']);
