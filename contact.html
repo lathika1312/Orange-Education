@@ -385,19 +385,19 @@ button:hover {
                         </div><!-- /.contact-page__content -->
                     </div><!-- /.col-lg-6 -->
                     <div class="col-lg-6 wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="100ms">
-                        <form class="contact-page__form contact-form-validated form-one" action="https://pixydrops.com/eduhive-html/inc/sendemail.php">
+                        <form class="contact-page__form contact-form-validated form-one" id="contactusForm" action="contact_form.php" method="POST">
                             <div class="form-one__group">
                                 <div class="form-one__control form-one__control--full">
-                                    <input type="text" name="name" placeholder="Full Name">
+                                    <input type="text" id="name" name="name" placeholder="Full Name">
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input type="email" name="email" placeholder="Email Address">
+                                    <input type="email" id="email" name="email" placeholder="Email Address">
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <input type="tel" name="tel" placeholder="Phone Number">
+                                    <input type="tel" id="tel" name="tel" placeholder="Phone Number">
                                 </div><!-- /.form-one__control form-one__control--full -->
                                 <div class="form-one__control form-one__control--full">
-                                    <textarea name="message" placeholder="Write Messge. . ."></textarea><!-- /# -->
+                                    <textarea name="message" id="message" placeholder="Write Messge. . ."></textarea><!-- /# -->
                                 </div><!-- /.form-one__control -->
                                 <div class="form-one__control form-one__control--full">
                                     <button type="submit" class="eduhive-btn">
@@ -414,6 +414,54 @@ button:hover {
                 </div><!-- /.row gutter-y-40 -->
             </div><!-- /.container -->
         </section><!-- /.contact-page section-space -->
+
+
+        <script>
+            // var getInTouchModal = document.getElementById("getInTouchModal");
+            // var getInTouchBtn = document.getElementById("getInTouchBtn");
+            // var closeGetInTouchModal = document.getElementById("closeGetInTouchModal");
+            var form = document.getElementById("contactusForm");
+            console.log(form,'formaaaaaaaaaaaaaa');
+            var successMessage = document.getElementById("successMessage");
+        
+            // // Show modal
+            // getInTouchBtn.onclick = function() {
+            //     getInTouchModal.style.display = "block";
+            // }
+        
+            // // Close modal
+            // closeGetInTouchModal.onclick = function() {
+            //     getInTouchModal.style.display = "none";
+            // }
+        
+            // // Close modal on clicking outside
+            // window.onclick = function(event) {
+            //     if (event.target == getInTouchModal) {
+            //         getInTouchModal.style.display = "none";
+            //     }
+            // }
+        
+            form.onsubmit = function(event) {
+            event.preventDefault(); // Prevent form from redirecting
+            var formData = new FormData(form);
+            
+            // AJAX request to PHP script
+            fetch("contact_form.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json()) // Parse JSON response
+            .then(data => {
+                if (data.status === 'success') {
+                    form.style.display = "none";
+                    successMessage.style.display = "block";
+                } else {
+                    alert(data.message || "Error submitting form. Please try again.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        };
+        </script>
 
         <footer class="main-footer section-space-top">
             <div class="container">
