@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tel = htmlspecialchars(trim($_POST['tel'] ?? ''));
     $message = htmlspecialchars(trim($_POST['message'] ?? ''));
 
-    if (!empty($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/^[0-9]{10}$/', $phone) && !empty($course)) {
+    if (!empty($name) && filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/^[0-9]{10}$/', $tel) && !empty($message)) {
         $mail = new PHPMailer();
 
         try {
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Port = 465;
 
             $mail->setFrom('demo.orangeacadamy@gmail.com', 'Contact Request');
-            $mail->addAddress('s.lathika1312@gmail.com');
+            $mail->addAddress('suriya1792000@gmail.com');
 
             $mail->isHTML(true);
             $mail->Subject = 'Contact Request from ' . $name;

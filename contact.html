@@ -421,7 +421,6 @@ button:hover {
             // var getInTouchBtn = document.getElementById("getInTouchBtn");
             // var closeGetInTouchModal = document.getElementById("closeGetInTouchModal");
             var form = document.getElementById("contactusForm");
-            console.log(form,'formaaaaaaaaaaaaaa');
             var successMessage = document.getElementById("successMessage");
         
             // // Show modal
@@ -453,7 +452,6 @@ button:hover {
             .then(response => response.json()) // Parse JSON response
             .then(data => {
                 if (data.status === 'success') {
-                    form.style.display = "none";
                     successMessage.style.display = "block";
                 } else {
                     alert(data.message || "Error submitting form. Please try again.");
